@@ -1,0 +1,681 @@
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Children's Day 1/6</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-7o+8zYI1wTJmR0bKt6Oq9nG4r5O4Z0nP4sI9hYcT5+Jc9pUQ1+5W6D5ZB6t9aD7Gz9zq2X5g8E0S3Jp6Z9xkQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --pink-soft: #f9d9e6;
+      --pink-soft-2: #f7c7d9;
+      --cream: #fff6f0;
+      --peach: #ffd2c2;
+      --strawberry: #f4a6b5;
+      --text: #6b3f4a;
+      --shadow: 0 12px 30px rgba(244, 166, 181, 0.25);
+      --radius-xl: 24px;
+      --radius-xxl: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Quicksand", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% 10%, #fff, transparent),
+        linear-gradient(180deg, var(--cream), var(--pink-soft));
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      padding: 32px 20px 80px;
+    }
+
+    .container {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    header .brand {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    header a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+
+    header a:hover {
+      background: var(--pink-soft-2);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: center;
+      padding: 48px;
+      border-radius: var(--radius-xxl);
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .hero .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--strawberry), var(--peach));
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 18px rgba(244, 166, 181, 0.4);
+    }
+
+    .hero .cta:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .hero-card {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 246, 240, 0.8);
+      border: 1px solid rgba(244, 166, 181, 0.25);
+    }
+
+    .hero-card .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      width: fit-content;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .hero-card li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .hero-card i {
+      color: var(--strawberry);
+      margin-top: 3px;
+    }
+
+    .floating {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .float-item {
+      position: absolute;
+      font-size: 22px;
+      opacity: 0.35;
+      color: var(--strawberry);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .float-item.cloud {
+      color: #f9f2f5;
+      opacity: 0.7;
+      font-size: 32px;
+      filter: drop-shadow(0 6px 10px rgba(244, 166, 181, 0.2));
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .reason-card {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 12px;
+      border: 1px solid rgba(244, 166, 181, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .reason-card h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+    }
+
+    .reason-card p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .reason-card .icon {
+      font-size: 26px;
+      color: var(--strawberry);
+    }
+
+    .gift {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      align-items: center;
+      padding: 36px;
+      border-radius: var(--radius-xxl);
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(255, 210, 194, 0.6));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-box {
+      width: 200px;
+      height: 200px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--pink-soft-2), var(--peach));
+      position: relative;
+      margin: 0 auto;
+      box-shadow: 0 18px 30px rgba(244, 166, 181, 0.35);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.05);
+    }
+
+    .gift-box::before,
+    .gift-box::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+    }
+
+    .gift-box::before {
+      width: 24px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gift-box::after {
+      width: 100%;
+      height: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .gift-box .bow {
+      position: absolute;
+      top: -12px;
+      width: 70px;
+      height: 40px;
+      border-radius: 50px 50px 20px 20px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
+      box-shadow: 0 10px 18px rgba(244, 166, 181, 0.3);
+    }
+
+    .gift-box .bow span {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--pink-soft-2);
+    }
+
+    .gift-box i {
+      font-size: 42px;
+      color: #fff;
+      z-index: 1;
+    }
+
+    .gift-info h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .gift-info p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .gift-info button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 18px rgba(244, 166, 181, 0.35);
+    }
+
+    .gift-info button:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: var(--pink-soft-2);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .particle-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      font-size: 18px;
+      opacity: 0.25;
+      color: var(--strawberry);
+      animation: drift 14s linear infinite;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateY(100vh) translateX(0);
+      }
+      to {
+        transform: translateY(-120vh) translateX(30px);
+      }
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 246, 240, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      text-align: left;
+    }
+
+    .modal-card h3 {
+      font-family: "Montserrat", sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .modal-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .modal-card .close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: var(--pink-soft-2);
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-card .close:hover {
+      transform: scale(1.05);
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 30;
+    }
+
+    .confetti span {
+      position: absolute;
+      font-size: 18px;
+      animation: confetti 2.4s ease-out forwards;
+    }
+
+    @keyframes confetti {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-220px) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 20px;
+      }
+
+      header nav {
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 32px;
+      }
+
+      .gift {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particle-layer" aria-hidden="true"></div>
+
+  <div class="page">
+    <div class="container">
+      <header>
+        <div class="brand">1/6 BABYCORE</div>
+        <nav>
+          <a href="#hero">Chao em be</a>
+          <a href="#reason">Ly do</a>
+          <a href="#gift">Hop qua bi mat</a>
+        </nav>
+      </header>
+    </div>
+
+    <section class="container hero" id="hero">
+      <div class="floating" aria-hidden="true">
+        <span class="float-item" style="top: 12%; left: 10%; animation-delay: 0s;">&#9829;</span>
+        <span class="float-item" style="top: 20%; right: 20%; animation-delay: 1s;">&#9829;</span>
+        <span class="float-item cloud" style="top: 12%; right: 5%; animation-delay: 1.6s;">&#9729;</span>
+        <span class="float-item cloud" style="bottom: 20%; left: 5%; animation-delay: 0.8s;">&#9729;</span>
+        <span class="float-item" style="bottom: 12%; right: 15%; animation-delay: 1.2s;">&#9829;</span>
+      </div>
+      <div>
+        <h1>Happy Children's Day to my little girl</h1>
+        <p>
+          Hom nay la 1/6, va doi voi anh, em van luon la em be dang yeu can
+          duoc cung chieu. Chuong nay danh tang rieng cho em, de nho rang
+          nhung dieu nho xinh nhat van lam trai tim anh rung dong.
+        </p>
+        <button class="cta" id="scrollToGift">
+          <i class="fa-solid fa-heart"></i>
+          Mo qua di em
+        </button>
+      </div>
+      <div class="hero-card">
+        <span class="chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Mood babycore</span>
+        <ul>
+          <li><i class="fa-solid fa-heart"></i> Mau pastel hong mem, nhe nhang</li>
+          <li><i class="fa-solid fa-heart"></i> Cam giac min, tinh te va am ap</li>
+          <li><i class="fa-solid fa-heart"></i> Chi danh cho em be cua anh</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container" id="reason">
+      <h2 class="section-title">Tai sao hom nay la ngay cua em?</h2>
+      <p class="section-subtitle">
+        Chu vi du lam da lon, nhung voi anh, em van la em be can duoc nang niu,
+        duoc cham soc va duoc nhan nhung mon qua nho xinh trong ngay 1/6.
+      </p>
+      <div class="reason-grid">
+        <div class="reason-card">
+          <span class="icon"><i class="fa-solid fa-ice-cream"></i></span>
+          <h3>Vi em dang yeu nhat</h3>
+          <p>
+            Anh muon tang em nhung niem vui nho, vi em luon lam moi ngay cua anh
+            tro nen de thuong va y nghia.
+          </p>
+        </div>
+        <div class="reason-card">
+          <span class="icon"><i class="fa-solid fa-gift"></i></span>
+          <h3>Vi em xung dang duoc cung</h3>
+          <p>
+            Du co bao nhieu cong viec, anh van muon em duoc thu gian, duoc cham
+            soc va duoc yeu thuong nhu mot em be.
+          </p>
+        </div>
+        <div class="reason-card">
+          <span class="icon"><i class="fa-solid fa-hands-holding-child"></i></span>
+          <h3>Vi anh muon o ben em</h3>
+          <p>
+            1/6 la cai coc nho de anh hua se dua em di an, di choi va tao that
+            nhieu ky niem dep cung nhau.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container gift" id="gift">
+      <div class="gift-box" id="giftBox" role="button" aria-label="Mo hop qua">
+        <div class="bow"><span></span><span></span></div>
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="gift-info">
+        <h2>Hop qua bi mat</h2>
+        <p>
+          Nhap vao hop qua nay de mo ra mot loi chuc nho anh viet rieng cho em.
+          Neu em muon, minh se hen nhau di an va di choi trong tuan nay nhe.
+        </p>
+        <button id="openGift">Mo ngay</button>
+      </div>
+    </section>
+
+    <div class="footer">Made with love for my little girl.</div>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" id="closeModal" aria-label="Dong"><i class="fa-solid fa-xmark"></i></button>
+      <h3>Loi chuc danh rieng cho em</h3>
+      <p>
+        Em be cua anh oi, cam on em da luon ben canh, da lam moi ngay cua anh
+        vang hon. 1/6 nay, anh muon em luon cuoi that tuoi, duoc yeu thuong
+        that nhieu, va se co mot buoi hen voi anh de an ngon, di choi va chup
+        that nhieu anh dep nhe.
+      </p>
+      <p>
+        Thuong em that nhieu. Anh hua se luon o day va cham soc em nhu mot em be
+        nho dang yeu nhat tren doi.
+      </p>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script>
+    const particleLayer = document.querySelector(".particle-layer");
+    const giftBox = document.getElementById("giftBox");
+    const openGift = document.getElementById("openGift");
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+    const confetti = document.getElementById("confetti");
+    const scrollToGift = document.getElementById("scrollToGift");
+
+    // Soft floating hearts in the background
+    const particleCount = 18;
+    for (let i = 0; i < particleCount; i += 1) {
+      const particle = document.createElement("span");
+      particle.className = "particle";
+      particle.innerHTML = "&#9829;";
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 8}s`;
+      particle.style.fontSize = `${12 + Math.random() * 16}px`;
+      particleLayer.appendChild(particle);
+    }
+
+    function launchConfetti() {
+      confetti.innerHTML = "";
+      const pieces = 20;
+      for (let i = 0; i < pieces; i += 1) {
+        const piece = document.createElement("span");
+        piece.innerHTML = "&#9829;";
+        piece.style.left = `${40 + Math.random() * 20}%`;
+        piece.style.bottom = "20%";
+        piece.style.fontSize = `${14 + Math.random() * 10}px`;
+        piece.style.color = Math.random() > 0.5 ? "#f4a6b5" : "#ffd2c2";
+        piece.style.animationDelay = `${Math.random() * 0.3}s`;
+        confetti.appendChild(piece);
+      }
+    }
+
+    function openModal() {
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      launchConfetti();
+    }
+
+    function closeModalCard() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      confetti.innerHTML = "";
+    }
+
+    giftBox.addEventListener("click", openModal);
+    openGift.addEventListener("click", openModal);
+    closeModal.addEventListener("click", closeModalCard);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModalCard();
+      }
+    });
+
+    scrollToGift.addEventListener("click", () => {
+      document.getElementById("gift").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
