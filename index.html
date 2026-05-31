@@ -500,6 +500,9 @@
   </style>
 </head>
 <body>
+  <audio id="bgAudio" autoplay loop playsinline preload="auto">
+    <source src="Từ Ngày Em Đến.mp3" type="audio/mpeg" />
+  </audio>
   <div class="particle-layer" aria-hidden="true"></div>
 
   <div class="page">
@@ -667,6 +670,25 @@
     scrollToGift.addEventListener("click", () => {
       document.getElementById("gift").scrollIntoView({ behavior: "smooth" });
     });
+
+    const bgAudio = document.getElementById("bgAudio");
+
+    function tryPlayAudio() {
+      if (!bgAudio) {
+        return;
+      }
+
+      bgAudio.play().catch(() => {
+        const unlock = () => {
+          bgAudio.play().catch(() => {});
+        };
+
+        document.addEventListener("click", unlock, { once: true });
+        document.addEventListener("touchstart", unlock, { once: true });
+      });
+    }
+
+    window.addEventListener("load", tryPlayAudio);
   </script>
 </body>
 </html>
